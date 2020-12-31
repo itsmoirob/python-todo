@@ -7,6 +7,11 @@ from .forms import *
 
 
 def index(request):
+    """
+    GET: View all tasks
+    POST: Create new task
+    """
+
     tasks = Task.objects.all()
 
     form = TaskForm()
@@ -20,3 +25,13 @@ def index(request):
 
     context = {'tasks': tasks, 'form': form}
     return render(request, 'tasks/list.html', context)
+
+
+def updateTask(request, pk):
+    """
+    Updates a task
+    """
+
+    task = Task.objects.get(id=pk)
+
+    return render(request, 'tasks/update_task.html')
