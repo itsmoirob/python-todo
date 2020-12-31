@@ -54,11 +54,9 @@ def deleteTask(request, pk):
 
     task = Task.objects.get(id=pk)
 
-    # if request.method == 'POST':
-    #     form = TaskForm(request.POST, instance=task)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('/')
+    if request.method == 'POST':
+        task.delete()
+        return redirect('/')
 
     context = {'item': task}
 
