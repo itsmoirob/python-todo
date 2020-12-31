@@ -34,4 +34,8 @@ def updateTask(request, pk):
 
     task = Task.objects.get(id=pk)
 
-    return render(request, 'tasks/update_task.html')
+    form = TaskForm(instance=task)
+
+    context = {'form': form}
+
+    return render(request, 'tasks/update_task.html', context)
